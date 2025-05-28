@@ -1,7 +1,7 @@
 package io.coalfired.api;
 
-import io.coalfired.model.ProductOffering;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.coalfired.model.ProductOffering;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -9,12 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -34,10 +34,10 @@ public class ProductOfferingApiController implements ProductOfferingApi {
         this.request = request;
     }
 
-    public ResponseEntity<List<ProductOffering>> listProductOffering(@Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to be provided in response" ,schema=@Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
-,@Parameter(in = ParameterIn.QUERY, description = "Requested index for start of resources to be provided in response" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
-,@Parameter(in = ParameterIn.QUERY, description = "Requested number of resources to be provided in response" ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
-) {
+    public ResponseEntity<List<ProductOffering>> listProductOffering(@Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to be provided in response", schema = @Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
+            , @Parameter(in = ParameterIn.QUERY, description = "Requested index for start of resources to be provided in response", schema = @Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
+            , @Parameter(in = ParameterIn.QUERY, description = "Requested number of resources to be provided in response", schema = @Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
+    ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -51,9 +51,9 @@ public class ProductOfferingApiController implements ProductOfferingApi {
         return new ResponseEntity<List<ProductOffering>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<ProductOffering> retrieveProductOffering(@Parameter(in = ParameterIn.PATH, description = "Identifier of the ProductOffering", required=true, schema=@Schema()) @PathVariable("id") String id
-,@Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to provide in response" ,schema=@Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
-) {
+    public ResponseEntity<ProductOffering> retrieveProductOffering(@Parameter(in = ParameterIn.PATH, description = "Identifier of the ProductOffering", required = true, schema = @Schema()) @PathVariable("id") String id
+            , @Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to provide in response", schema = @Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
+    ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

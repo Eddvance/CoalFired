@@ -10,11 +10,11 @@ import io.coalfired.model.ProductSpecification;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,55 +29,55 @@ import java.util.List;
 @Validated
 public interface ProductSpecificationApi {
 
-    @Operation(summary = "List or find ProductSpecification objects", description = "This operation list or find ProductSpecification entities", tags={ "productSpecification" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", array = @ArraySchema(schema = @Schema(implementation = ProductSpecification.class)))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "405", description = "Method Not allowed", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))) })
+    @Operation(summary = "List or find ProductSpecification objects", description = "This operation list or find ProductSpecification entities", tags = {"productSpecification"})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", array = @ArraySchema(schema = @Schema(implementation = ProductSpecification.class)))),
+
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "405", description = "Method Not allowed", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class)))})
     @RequestMapping(value = "/productSpecification",
-        produces = { "application/json;charset=utf-8" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<List<ProductSpecification>> listProductSpecification(@Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to be provided in response" ,schema=@Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
-, @Parameter(in = ParameterIn.QUERY, description = "Requested index for start of resources to be provided in response" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
-, @Parameter(in = ParameterIn.QUERY, description = "Requested number of resources to be provided in response" ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
-);
+            produces = {"application/json;charset=utf-8"},
+            method = RequestMethod.GET)
+    ResponseEntity<List<ProductSpecification>> listProductSpecification(@Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to be provided in response", schema = @Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
+            , @Parameter(in = ParameterIn.QUERY, description = "Requested index for start of resources to be provided in response", schema = @Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
+            , @Parameter(in = ParameterIn.QUERY, description = "Requested number of resources to be provided in response", schema = @Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
+    );
 
 
-    @Operation(summary = "Retrieves a ProductSpecification by ID", description = "This operation retrieves a ProductSpecification entity. Attribute selection is enabled for all first level attributes.", tags={ "productSpecification" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = ProductSpecification.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "405", description = "Method Not allowed", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))) })
+    @Operation(summary = "Retrieves a ProductSpecification by ID", description = "This operation retrieves a ProductSpecification entity. Attribute selection is enabled for all first level attributes.", tags = {"productSpecification"})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = ProductSpecification.class))),
+
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "405", description = "Method Not allowed", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class))),
+
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json;charset&#x3D;utf-8", schema = @Schema(implementation = Error.class)))})
     @RequestMapping(value = "/productSpecification/{id}",
-        produces = { "application/json;charset=utf-8" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<ProductSpecification> retrieveProductSpecification(@Parameter(in = ParameterIn.PATH, description = "Identifier of the ProductSpecification", required=true, schema=@Schema()) @PathVariable("id") String id
-, @Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to provide in response" ,schema=@Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
-);
+            produces = {"application/json;charset=utf-8"},
+            method = RequestMethod.GET)
+    ResponseEntity<ProductSpecification> retrieveProductSpecification(@Parameter(in = ParameterIn.PATH, description = "Identifier of the ProductSpecification", required = true, schema = @Schema()) @PathVariable("id") String id
+            , @Parameter(in = ParameterIn.QUERY, description = "Comma-separated properties to provide in response", schema = @Schema()) @Valid @RequestParam(value = "fields", required = false) String fields
+    );
 
 }
 
