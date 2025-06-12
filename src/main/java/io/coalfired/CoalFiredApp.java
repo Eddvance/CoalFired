@@ -8,7 +8,6 @@ import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
 @ComponentScan(basePackages = { "io.coalfired", "io.coalfired.api", "io.coalfired.configuration" })
 public class CoalFiredApp implements CommandLineRunner {
 
