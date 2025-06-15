@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.Module;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -39,7 +39,7 @@ public class CoalFiredApp implements CommandLineRunner {
     }
 
     @Configuration
-    static class CustomDateConfig extends WebMvcConfigurerAdapter {
+    static class CustomDateConfig implements WebMvcConfigurer {
         @Override
         public void addFormatters(FormatterRegistry registry) {
             registry.addConverter(new LocalDateConverter("yyyy-MM-dd"));

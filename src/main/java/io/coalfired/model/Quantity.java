@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.Nulls;
 @Schema(description = "An amount in a given unit")
 @Validated
 @NotUndefined
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-05-22T16:36:15.642271455Z[GMT]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-05-22T16:36:15.642271455Z[GMT]")
 
 
 public class Quantity   {

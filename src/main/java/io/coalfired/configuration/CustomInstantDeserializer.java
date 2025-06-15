@@ -1,5 +1,6 @@
 package io.coalfired.configuration;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonTokenId;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -141,12 +142,30 @@ public class CustomInstantDeserializer<T extends Temporal>
         adjust = base.adjust;
     }
 
+    protected CustomInstantDeserializer(CustomInstantDeserializer<T> base, Boolean leniency) {
+        super(base, leniency);
+        parsedToValue = base.parsedToValue;
+        fromMilliseconds = base.fromMilliseconds;
+        fromNanoseconds = base.fromNanoseconds;
+        adjust = base.adjust;
+    }
+
     @Override
-    protected JsonDeserializer<T> withDateFormat(DateTimeFormatter dtf) {
+    protected ThreeTenDateTimeDeserializerBase<T> withDateFormat(DateTimeFormatter dtf) {
         if (dtf == _formatter) {
             return this;
         }
         return new CustomInstantDeserializer<T>(this, dtf);
+    }
+
+    @Override
+    protected ThreeTenDateTimeDeserializerBase<T> withLeniency(Boolean leniency) {
+        return new CustomInstantDeserializer<T>(this, leniency);
+    }
+
+    @Override
+    protected ThreeTenDateTimeDeserializerBase<T> withShape(JsonFormat.Shape shape) {
+        return null;
     }
 
     @Override

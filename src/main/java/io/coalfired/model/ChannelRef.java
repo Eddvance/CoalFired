@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 /**
  * The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..
@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 @Schema(description = "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..")
 @Validated
 @NotUndefined
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-05-22T16:36:15.642271455Z[GMT]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-05-22T16:36:15.642271455Z[GMT]")
 
 
 public class ChannelRef   {

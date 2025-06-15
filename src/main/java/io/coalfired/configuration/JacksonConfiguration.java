@@ -21,3 +21,4 @@ public class JacksonConfiguration {
         return module;
     }
 }
+

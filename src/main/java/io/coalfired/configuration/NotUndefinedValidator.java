@@ -2,8 +2,8 @@ package io.coalfired.configuration;
 
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.lang.reflect.Field;
 
 public class NotUndefinedValidator implements ConstraintValidator<NotUndefined, Object> {
