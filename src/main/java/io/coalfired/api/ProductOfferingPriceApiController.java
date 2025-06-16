@@ -7,21 +7,17 @@ import io.coalfired.model.Quantity;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-05-22T16:36:15.642271455Z[GMT]")
 @RestController
@@ -38,6 +34,30 @@ public class ProductOfferingPriceApiController implements ProductOfferingPriceAp
         this.request = request;
     }
 
+    private ProductOfferingPrice createBlockOfferingPrice() {
+        ProductOfferingPrice price = new ProductOfferingPrice();
+
+        Money money = new Money();
+        money.setValue(85.43f);
+        money.setUnit("NZD");
+        price.setPrice(money);
+
+        Quantity unitOfMeasure = new Quantity();
+        unitOfMeasure.setAmount(256.00f);
+        unitOfMeasure.setUnits("kWh");
+        price.setUnitOfMeasure(unitOfMeasure);
+
+        price.setId("block-256-offer-price");
+        price.setHref("/platform/productCatalogManagement/v4/productOfferingPrice/block-256-offer-price");
+        price.setName("Prepaid 256kWh block");
+        price.setDescription("One time charge for a 256kWh block of usage");
+        price.setPriceType("otc");
+        price.setLifecycleStatus("Active");
+        price.setVersion("1");
+
+        return price;
+    }
+
     @RequestMapping(value = "/productOfferingPrice",
             produces = {"application/json;charset=utf-8"},
             method = RequestMethod.GET)
@@ -50,30 +70,8 @@ public class ProductOfferingPriceApiController implements ProductOfferingPriceAp
             @Valid @RequestParam(value = "limit", required = false) Integer limit
     ) {
         try {
-            // Pour l'instant, on retourne juste notre tarif block-256
             List<ProductOfferingPrice> prices = new ArrayList<>();
-
-            ProductOfferingPrice price = new ProductOfferingPrice();
-            Money money = new Money();
-            money.setValue(85.43f);
-            money.setUnit("NZD");
-            price.setPrice(money);
-
-            Quantity unitOfMeasure = new Quantity();
-            unitOfMeasure.setAmount(256.00f);
-            unitOfMeasure.setUnits("kWh");
-            price.setUnitOfMeasure(unitOfMeasure);
-
-            price.setId("block-256-offer-price");
-            price.setHref("/platform/productCatalogManagement/v4/productOfferingPrice/block-256-offer-price");
-            price.setName("Prepaid 256kWh block");
-            price.setDescription("One time charge for a 256kWh block of usage");
-            price.setPriceType("otc");
-            price.setLifecycleStatus("Active");
-            price.setVersion("1");
-
-            prices.add(price);
-
+            prices.add(createBlockOfferingPrice());
             return new ResponseEntity<>(prices, HttpStatus.OK);
 
         } catch (Exception e) {
@@ -93,26 +91,7 @@ public class ProductOfferingPriceApiController implements ProductOfferingPriceAp
     ) {
         try {
             if ("block-256-offer-price".equals(id)) {
-                ProductOfferingPrice price = new ProductOfferingPrice();
-
-                Money money = new Money();
-                money.setValue(85.43f);
-                money.setUnit("NZD");
-                price.setPrice(money);
-
-                Quantity unitOfMeasure = new Quantity();
-                unitOfMeasure.setAmount(256.00f);
-                unitOfMeasure.setUnits("kWh");
-                price.setUnitOfMeasure(unitOfMeasure);
-
-                price.setId("block-256-offer-price");
-                price.setHref("/platform/productCatalogManagement/v4/productOfferingPrice/block-256-offer-price");
-                price.setName("Prepaid 256kWh block");
-                price.setDescription("One time charge for a 256kWh block of usage");
-                price.setPriceType("otc");
-                price.setLifecycleStatus("Active");
-                price.setVersion("1");
-
+                ProductOfferingPrice price = createBlockOfferingPrice();
                 log.info("Successfully retrieved ProductOfferingPrice for id: {}", id);
                 return new ResponseEntity<>(price, HttpStatus.OK);
             }
